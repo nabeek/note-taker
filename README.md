@@ -8,7 +8,7 @@ This application continues to build on our Node foundation, using an Express bac
 
 ## Installation and Usage
 
-The deployed application can be found at: [Note Taker](https://nabeek-note-taker.herokuapp.com/).
+The deployed application can be found at: <a href="https://nabeek-note-taker.herokuapp.com/" target="_blank">Note Taker</a>
 
 If interested in running the app locally or deploying your own version, clone or fork the repo from [GitHub](https://github.com/nabeek/note-taker). For local versions run `npm install` and then start the server with `node server.js`. Navigate to http://localhost:8080/ or the port of your choosing if editing the server.js file.
 
