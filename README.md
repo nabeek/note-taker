@@ -1,14 +1,14 @@
 # Note Taker - An Express Application
 
-This application lets users write, save, recall, and delete notes.
+This application lets users write, save, recall, and delete simple text-based notes.
 
 ## Motivation
 
-This application reflects a simple yet effective example of test-driven development, along with use of [ES6 Classes and Subclasses](https://hacks.mozilla.org/2015/07/es6-in-depth-classes/), HTML generation, regular expressions, switch statements, and more. My goal this week was to continue to utilize as much ES6 as possible throughout the application.
+This application continues to build on our Node foundation, using an Express backend and saving and retrieving note data from a JSON file. The assignment also presents our first opportunity to utilize Heroku for deploying an application that serves static files and stores data.
 
 ## Installation and Usage
 
-The deployed application can be found at: [Note Taker](#).
+The deployed application can be found at: [Note Taker](https://nabeek-note-taker.herokuapp.com/).
 
 If interested in running the app locally or deploying your own version, clone or fork the repo from [GitHub](https://github.com/nabeek/note-taker). For local versions run `npm install` and then start the server with `node server.js`. Navigate to http://localhost:8080/ or the port of your choosing if editing the server.js file.
 
@@ -21,6 +21,40 @@ If interested in running the app locally or deploying your own version, clone or
 [Bootswatch](https://bootswatch.com/)\
 [Node](https://nodejs.org/en/)\
 [Express](https://expressjs.com/)
+
+## Code Example
+
+The homework readme indicated that the `fs` module should be utilized for deleting notes, the logic of which I assume is something like: read the db.json file, match the note to delete with a note that currently exists, and then write the file (writing-over) without the note to be deleted.
+
+That being said, as I was thinking through the above process I thought since the notes are just objects within an array, why not just identify the object to be deleted and splice it out?
+
+```js
+app.delete("/api/notes/:id", (req, res) => {
+  const noteID = req.params.id;
+  const getNote = notesData.find(note => note.id === noteID);
+  const noteIndex = notesData.indexOf(getNote);
+
+  notesData.splice(noteIndex, 1);
+  res.json({ ok: true });
+});
+```
+
+This is possible because the provided event listeners complete an ajax call to the "database" whenever a note is saved _or_ deleted.
+
+```js
+var getAndRenderNotes = function () {
+  return getNotes().then(function (data) {
+    renderNoteList(data);
+  });
+};
+
+var getNotes = function () {
+  return $.ajax({
+    url: "/api/notes",
+    method: "GET",
+  });
+};
+```
 
 ## Contributing
 
