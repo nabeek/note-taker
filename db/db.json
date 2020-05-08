@@ -1,1 +1,7 @@
-[{ "title": "Test Title", "text": "Test text" }]
+[
+  {
+    "id": "1",
+    "title": "Welcome to Note Taker",
+    "text": "Welcome to Note Taker, built with Express.\n\nTo use this application, simply write out a name and body for your note, then click the Save icon in the upper right corner. You can recall a note by clicking on it in the list to the left, write a new note by clicking on the Pencil icon (but careful, it will erase any unsaved data), or delete an unneeded note by clicking on its respective Trash icon."
+  }
+]
